@@ -1,0 +1,32 @@
+server:
+  port: 80
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url:  jdbc:mysql://120.26.161.154:3305/blogs?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: myuser
+      password: root
+
+
+mybatis-plus:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.zwk.pojo
+  configuration:
+    map-underscore-to-camel-case: true #是否开启驼峰命名
+
+logging:
+  level:
+    root: info
+    com.zwk: debug
+  file:
+    name: log/blog.log
+
+
+comment.avatar: /images/avatar.png
+

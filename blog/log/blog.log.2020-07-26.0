@@ -1,0 +1,888 @@
+2020-07-26 09:37:20.799  INFO 12272 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/comments', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.CommentController.post', args=[Comment(id=null, nickname=小张, email=1460157126@qq.com, content=试试看, avatar=null, createTime=null, adminComment=false, blogId=null, parentCommentId=13, replyName=ss, topCommentId=null, blog=Blog(id=12, title=null, content=null, firstPicture=null, flag=null, views=null, appreciation=false, shareStatement=false, commentabled=false, published=false, recommend=false, createTime=null, updateTime=null, description=null, typeId=null, userId=null, tagIds=null, type=null, tags=[], comments=[], user=null), childComments=[]), org.apache.catalina.session.StandardSessionFacade@f69418e]}
+2020-07-26 09:37:22.058 DEBUG 12272 --- [http-nio-8080-exec-2] c.z.m.C.getCommentByIdAndBlogId          : ==>  Preparing: select * from t_comment where id=? and blog_id=? 
+2020-07-26 09:37:22.064 DEBUG 12272 --- [http-nio-8080-exec-2] c.z.m.C.getCommentByIdAndBlogId          : ==> Parameters: 13(Long), 12(Long)
+2020-07-26 09:37:22.137 DEBUG 12272 --- [http-nio-8080-exec-2] c.z.m.C.getCommentByIdAndBlogId          : <==      Total: 1
+2020-07-26 09:37:22.140 DEBUG 12272 --- [http-nio-8080-exec-2] c.zwk.mapper.CommentMapper.saveComment   : ==>  Preparing: insert into t_comment values (null,?,?,?,?,?,?,?,?,?,?) 
+2020-07-26 09:37:22.141 DEBUG 12272 --- [http-nio-8080-exec-2] c.zwk.mapper.CommentMapper.saveComment   : ==> Parameters: 小张(String), 1460157126@qq.com(String), 试试看(String), /images/avatar.png(String), 2020-07-26 09:37:22.139(Timestamp), false(Boolean), 12(Long), ss(String), 13(Long), 12(Long)
+2020-07-26 09:37:22.331 DEBUG 12272 --- [http-nio-8080-exec-2] c.zwk.mapper.CommentMapper.saveComment   : <==    Updates: 1
+2020-07-26 09:37:22.538  INFO 12272 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : 返回后redirect:/comments/12
+2020-07-26 09:37:22.540  INFO 12272 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 09:37:22.607  INFO 12272 --- [http-nio-8080-exec-3] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/comments/12', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.CommentController.comments', args=[12, {}]}
+2020-07-26 09:37:22.609 DEBUG 12272 --- [http-nio-8080-exec-3] m.C.getCommentByParentCommentIdAndBlogId : ==>  Preparing: select * from t_comment where parent_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 09:37:22.611 DEBUG 12272 --- [http-nio-8080-exec-3] m.C.getCommentByParentCommentIdAndBlogId : ==> Parameters: -1(Long), 12(Long)
+2020-07-26 09:37:22.741 DEBUG 12272 --- [http-nio-8080-exec-3] m.C.getCommentByParentCommentIdAndBlogId : <==      Total: 4
+2020-07-26 09:37:22.743 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 09:37:22.745 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 16(Long), 12(Long)
+2020-07-26 09:37:22.846 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 09:37:22.849 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 09:37:22.850 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 15(Long), 12(Long)
+2020-07-26 09:37:22.946 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 09:37:22.948 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 09:37:22.952 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 14(Long), 12(Long)
+2020-07-26 09:37:23.050 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 09:37:23.051 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 09:37:23.052 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 12(Long), 12(Long)
+2020-07-26 09:37:23.153 DEBUG 12272 --- [http-nio-8080-exec-3] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 2
+2020-07-26 09:37:23.153  INFO 12272 --- [http-nio-8080-exec-3] com.zwk.aspect.LogAspect                 : 返回后blog :: commentList
+2020-07-26 09:37:23.153  INFO 12272 --- [http-nio-8080-exec-3] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 10:48:07.605  INFO 18684 --- [main] com.zwk.BlogApplication                  : Starting BlogApplication on DESKTOP-11MH91A with PID 18684 (D:\IdeaFile\blog\target\classes started by mrz in D:\IdeaFile\blog)
+2020-07-26 10:48:07.613 DEBUG 18684 --- [main] com.zwk.BlogApplication                  : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 10:48:07.615  INFO 18684 --- [main] com.zwk.BlogApplication                  : No active profile set, falling back to default profiles: default
+2020-07-26 10:48:12.133  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$d90d214d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:12.552  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:12.603  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$ad7900e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:12.617  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$e6bb18e6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:12.624  INFO 18684 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 10:48:12.905  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:13.219  INFO 18684 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 10:48:13.220  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:13.524  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:13.613  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:16.446  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:16.495  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:16.522  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:16.540  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:16.617  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:16.619  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:17.403  INFO 18684 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 10:48:18.515  INFO 18684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-26 10:48:18.534  INFO 18684 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-26 10:48:18.535  INFO 18684 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-26 10:48:18.999  INFO 18684 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-26 10:48:19.000  INFO 18684 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11254 ms
+2020-07-26 10:48:20.943  INFO 18684 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 10:48:21.342  INFO 18684 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 10:48:22.638  INFO 18684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-26 10:48:22.665  INFO 18684 --- [main] com.zwk.BlogApplication                  : Started BlogApplication in 16.911 seconds (JVM running for 21.995)
+2020-07-26 10:48:33.947  INFO 18684 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590627633; Webstorm-bb7400a0=c3dbb852-b2b7-4b4d-866c-66f33b39efd0; JSESSIONID=218B6F8DF1158B450043246818C46023] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-26 10:48:33.966  INFO 18684 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-26 10:48:33.966  INFO 18684 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-26 10:48:34.012  INFO 18684 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 46 ms
+2020-07-26 10:48:34.183  INFO 18684 --- [http-nio-8080-exec-1] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/blog/12', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.IndexController.blog', args=[12, {}]}
+2020-07-26 10:48:35.006 DEBUG 18684 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getDetailedBlog  : ==>  Preparing: select b.id,b.title,b.first_picture,b.flag,b.content,b.views,b.update_time,b.commentabled,b.appreciation,b.share_statement,b.tag_ids, u.avatar,u.nickname from t_blog b,t_user u where b.user_id=u.id and b.published=1 and b.id=? 
+2020-07-26 10:48:35.086 DEBUG 18684 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getDetailedBlog  : ==> Parameters: 12(Long)
+2020-07-26 10:48:35.184 DEBUG 18684 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getDetailedBlog  : <==      Total: 1
+2020-07-26 10:48:35.200 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectById      : ==>  Preparing: SELECT id,name FROM t_tag WHERE id=? 
+2020-07-26 10:48:35.201 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectById      : ==> Parameters: 4(Long)
+2020-07-26 10:48:35.605 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectById      : <==      Total: 1
+2020-07-26 10:48:35.608 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectById      : ==>  Preparing: SELECT id,name FROM t_tag WHERE id=? 
+2020-07-26 10:48:35.609 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectById      : ==> Parameters: 5(Long)
+2020-07-26 10:48:35.647 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectById      : <==      Total: 1
+2020-07-26 10:48:35.808 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.BlogMapper.updateViews    : ==>  Preparing: update t_blog set views=views+1 where id=? 
+2020-07-26 10:48:35.809 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.BlogMapper.updateViews    : ==> Parameters: 12(Long)
+2020-07-26 10:48:35.880 DEBUG 18684 --- [http-nio-8080-exec-1] com.zwk.mapper.BlogMapper.updateViews    : <==    Updates: 1
+2020-07-26 10:48:35.959  INFO 18684 --- [http-nio-8080-exec-1] com.zwk.aspect.LogAspect                 : 返回后blog
+2020-07-26 10:48:35.961  INFO 18684 --- [http-nio-8080-exec-1] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 10:48:37.789 ERROR 18684 --- [http-nio-8080-exec-2] c.z.handler.ControllerExceptionHandler   : Request Url : org.apache.shiro.web.servlet.ShiroHttpServletRequest@4aac7d07, Exception : Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "www.out.pp"
+2020-07-26 10:48:39.881  INFO 18684 --- [http-nio-8080-exec-5] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/comments/12', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.CommentController.comments', args=[12, {}]}
+2020-07-26 10:48:39.893 DEBUG 18684 --- [http-nio-8080-exec-5] m.C.getCommentByParentCommentIdAndBlogId : ==>  Preparing: select * from t_comment where parent_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 10:48:39.894 DEBUG 18684 --- [http-nio-8080-exec-5] m.C.getCommentByParentCommentIdAndBlogId : ==> Parameters: -1(Long), 12(Long)
+2020-07-26 10:48:39.930 DEBUG 18684 --- [http-nio-8080-exec-5] m.C.getCommentByParentCommentIdAndBlogId : <==      Total: 4
+2020-07-26 10:48:39.931 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 10:48:39.932 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 16(Long), 12(Long)
+2020-07-26 10:48:39.974 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 10:48:39.976 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 10:48:39.976 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 15(Long), 12(Long)
+2020-07-26 10:48:40.011 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 10:48:40.013 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 10:48:40.013 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 14(Long), 12(Long)
+2020-07-26 10:48:40.047 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 10:48:40.048 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 10:48:40.048 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 12(Long), 12(Long)
+2020-07-26 10:48:40.085 DEBUG 18684 --- [http-nio-8080-exec-5] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 2
+2020-07-26 10:48:40.086  INFO 18684 --- [http-nio-8080-exec-5] com.zwk.aspect.LogAspect                 : 返回后blog :: commentList
+2020-07-26 10:48:40.086  INFO 18684 --- [http-nio-8080-exec-5] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 10:53:08.806  INFO 18684 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.IndexController.index', args=[1, 2, {}]}
+2020-07-26 10:53:09.372 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.mapper.TypeMapper.selectList_COUNT   : ==>  Preparing: SELECT count(0) FROM t_type 
+2020-07-26 10:53:09.374 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.mapper.TypeMapper.selectList_COUNT   : ==> Parameters: 
+2020-07-26 10:53:09.408 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.mapper.TypeMapper.selectList_COUNT   : <==      Total: 1
+2020-07-26 10:53:09.412 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type LIMIT ? 
+2020-07-26 10:53:09.412 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 6(Integer)
+2020-07-26 10:53:09.447 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 6
+2020-07-26 10:53:09.449 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 10:53:09.450 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 1(Long)
+2020-07-26 10:53:09.485 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 2
+2020-07-26 10:53:09.486 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 10:53:09.486 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 5(Long)
+2020-07-26 10:53:09.519 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 10:53:09.519 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 10:53:09.520 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 10(Long)
+2020-07-26 10:53:09.565 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 10:53:09.566 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 10:53:09.566 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 11(Long)
+2020-07-26 10:53:09.600 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 3
+2020-07-26 10:53:09.600 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 10:53:09.601 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 12(Long)
+2020-07-26 10:53:09.909 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 10:53:09.910 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 10:53:09.910 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 13(Long)
+2020-07-26 10:53:09.943 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 10:53:09.949 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.TagMapper.selectList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_tag 
+2020-07-26 10:53:09.949 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.TagMapper.selectList_COUNT  : ==> Parameters: 
+2020-07-26 10:53:09.986 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.TagMapper.selectList_COUNT  : <==      Total: 1
+2020-07-26 10:53:09.986 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.TagMapper.selectList      : ==>  Preparing: SELECT id,name FROM t_tag LIMIT ? 
+2020-07-26 10:53:09.986 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.TagMapper.selectList      : ==> Parameters: 6(Integer)
+2020-07-26 10:53:10.020 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.TagMapper.selectList      : <==      Total: 5
+2020-07-26 10:53:10.021 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 10:53:10.021 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 4(Long)
+2020-07-26 10:53:10.069 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 6
+2020-07-26 10:53:10.070 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 10:53:10.070 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 5(Long)
+2020-07-26 10:53:10.109 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 5
+2020-07-26 10:53:10.110 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 10:53:10.111 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 6(Long)
+2020-07-26 10:53:10.148 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 10:53:10.150 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 10:53:10.150 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 7(Long)
+2020-07-26 10:53:10.184 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 10:53:10.185 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 10:53:10.185 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 8(Long)
+2020-07-26 10:53:10.220 DEBUG 18684 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 0
+2020-07-26 10:53:10.226 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog WHERE recommend = 1 AND published = 1 
+2020-07-26 10:53:10.227 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==> Parameters: 
+2020-07-26 10:53:10.272 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getRecommendBlog_COUNT  : <==      Total: 1
+2020-07-26 10:53:10.272 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.mapper.BlogMapper.getRecommendBlog   : ==>  Preparing: select id,title from t_blog where recommend=1 and published=1 order by update_time desc LIMIT ? 
+2020-07-26 10:53:10.272 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.mapper.BlogMapper.getRecommendBlog   : ==> Parameters: 6(Integer)
+2020-07-26 10:53:10.309 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.mapper.BlogMapper.getRecommendBlog   : <==      Total: 5
+2020-07-26 10:53:10.317 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t, t_user u WHERE b.type_id = t.id AND b.user_id = u.id AND b.published = 1 
+2020-07-26 10:53:10.318 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==> Parameters: 
+2020-07-26 10:53:10.361 DEBUG 18684 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getIndexBlog_COUNT      : <==      Total: 1
+2020-07-26 10:53:10.363 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.BlogMapper.getIndexBlog   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.published=1 order by b.update_time desc LIMIT ? 
+2020-07-26 10:53:10.364 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.BlogMapper.getIndexBlog   : ==> Parameters: 2(Integer)
+2020-07-26 10:53:10.399 DEBUG 18684 --- [http-nio-8080-exec-2] com.zwk.mapper.BlogMapper.getIndexBlog   : <==      Total: 2
+2020-07-26 10:53:10.400  INFO 18684 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : 返回后index
+2020-07-26 10:53:10.400  INFO 18684 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 11:11:24.626  INFO 18684 --- [http-nio-8080-exec-7] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/blog/12', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.IndexController.blog', args=[12, {}]}
+2020-07-26 11:11:26.665 DEBUG 18684 --- [http-nio-8080-exec-7] c.zwk.mapper.BlogMapper.getDetailedBlog  : ==>  Preparing: select b.id,b.title,b.first_picture,b.flag,b.content,b.views,b.update_time,b.commentabled,b.appreciation,b.share_statement,b.tag_ids, u.avatar,u.nickname from t_blog b,t_user u where b.user_id=u.id and b.published=1 and b.id=? 
+2020-07-26 11:11:26.666 DEBUG 18684 --- [http-nio-8080-exec-7] c.zwk.mapper.BlogMapper.getDetailedBlog  : ==> Parameters: 12(Long)
+2020-07-26 11:11:26.702 DEBUG 18684 --- [http-nio-8080-exec-7] c.zwk.mapper.BlogMapper.getDetailedBlog  : <==      Total: 1
+2020-07-26 11:11:26.702 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : ==>  Preparing: SELECT id,name FROM t_tag WHERE id=? 
+2020-07-26 11:11:26.703 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : ==> Parameters: 4(Long)
+2020-07-26 11:11:26.737 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : <==      Total: 1
+2020-07-26 11:11:26.738 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : ==>  Preparing: SELECT id,name FROM t_tag WHERE id=? 
+2020-07-26 11:11:26.738 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : ==> Parameters: 5(Long)
+2020-07-26 11:11:26.773 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : <==      Total: 1
+2020-07-26 11:11:26.774 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.BlogMapper.updateViews    : ==>  Preparing: update t_blog set views=views+1 where id=? 
+2020-07-26 11:11:26.775 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.BlogMapper.updateViews    : ==> Parameters: 12(Long)
+2020-07-26 11:11:26.843 DEBUG 18684 --- [http-nio-8080-exec-7] com.zwk.mapper.BlogMapper.updateViews    : <==    Updates: 1
+2020-07-26 11:11:26.919  INFO 18684 --- [http-nio-8080-exec-7] com.zwk.aspect.LogAspect                 : 返回后blog
+2020-07-26 11:11:26.919  INFO 18684 --- [http-nio-8080-exec-7] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 11:11:26.972 ERROR 18684 --- [http-nio-8080-exec-8] c.z.handler.ControllerExceptionHandler   : Request Url : org.apache.shiro.web.servlet.ShiroHttpServletRequest@6f0fbb1a, Exception : Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "www.out.pp"
+2020-07-26 11:11:28.341  INFO 18684 --- [http-nio-8080-exec-10] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/comments/12', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.CommentController.comments', args=[12, {}]}
+2020-07-26 11:11:28.343 DEBUG 18684 --- [http-nio-8080-exec-10] m.C.getCommentByParentCommentIdAndBlogId : ==>  Preparing: select * from t_comment where parent_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 11:11:28.344 DEBUG 18684 --- [http-nio-8080-exec-10] m.C.getCommentByParentCommentIdAndBlogId : ==> Parameters: -1(Long), 12(Long)
+2020-07-26 11:11:28.378 DEBUG 18684 --- [http-nio-8080-exec-10] m.C.getCommentByParentCommentIdAndBlogId : <==      Total: 4
+2020-07-26 11:11:28.379 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 11:11:28.380 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 16(Long), 12(Long)
+2020-07-26 11:11:28.413 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 11:11:28.414 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 11:11:28.415 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 15(Long), 12(Long)
+2020-07-26 11:11:28.447 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 11:11:28.448 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 11:11:28.449 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 14(Long), 12(Long)
+2020-07-26 11:11:28.481 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 0
+2020-07-26 11:11:28.482 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : ==>  Preparing: select * from t_comment where top_comment_id=? and blog_id=? order by create_time desc 
+2020-07-26 11:11:28.483 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : ==> Parameters: 12(Long), 12(Long)
+2020-07-26 11:11:28.517 DEBUG 18684 --- [http-nio-8080-exec-10] c.z.m.C.getCommentByTopCommentAndBlogId  : <==      Total: 2
+2020-07-26 11:11:28.518  INFO 18684 --- [http-nio-8080-exec-10] com.zwk.aspect.LogAspect                 : 返回后blog :: commentList
+2020-07-26 11:11:28.518  INFO 18684 --- [http-nio-8080-exec-10] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 11:23:27.694  INFO 15028 --- [main] com.zwk.BlogApplication                  : Starting BlogApplication on DESKTOP-11MH91A with PID 15028 (D:\IdeaFile\blog\target\classes started by mrz in D:\IdeaFile\blog)
+2020-07-26 11:23:27.703 DEBUG 15028 --- [main] com.zwk.BlogApplication                  : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 11:23:27.704  INFO 15028 --- [main] com.zwk.BlogApplication                  : No active profile set, falling back to default profiles: default
+2020-07-26 11:23:29.933  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$39c4d9ee] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:30.190  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:30.217  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$6b8f48af] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:30.226  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$4772d187] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:30.231  INFO 15028 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 11:23:30.300  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:30.384  INFO 15028 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 11:23:30.385  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:30.473  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:30.488  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:31.436  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:31.443  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:31.456  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:31.463  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:31.484  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:31.485  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:31.675  INFO 15028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:23:32.094  INFO 15028 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-26 11:23:32.110  INFO 15028 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-26 11:23:32.110  INFO 15028 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-26 11:23:32.292  INFO 15028 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-26 11:23:32.292  INFO 15028 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4377 ms
+2020-07-26 11:23:32.868  INFO 15028 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 11:23:33.018  INFO 15028 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 11:23:33.517  INFO 15028 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-26 11:23:33.526  INFO 15028 --- [main] com.zwk.BlogApplication                  : Started BlogApplication in 6.945 seconds (JVM running for 9.155)
+2020-07-26 11:25:49.779  INFO 15028 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590627633; Webstorm-bb7400a0=c3dbb852-b2b7-4b4d-866c-66f33b39efd0; JSESSIONID=218B6F8DF1158B450043246818C46023] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-26 11:25:49.802  INFO 15028 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-26 11:25:49.803  INFO 15028 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-26 11:25:49.864  INFO 15028 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 59 ms
+2020-07-26 11:25:57.491 DEBUG 15028 --- [http-nio-8080-exec-3] com.zwk.mapper.UserMapper.checkUser      : ==>  Preparing: select * from t_user where username=? 
+2020-07-26 11:25:57.581 DEBUG 15028 --- [http-nio-8080-exec-3] com.zwk.mapper.UserMapper.checkUser      : ==> Parameters: admin(String)
+2020-07-26 11:25:57.700 DEBUG 15028 --- [http-nio-8080-exec-3] com.zwk.mapper.UserMapper.checkUser      : <==      Total: 1
+2020-07-26 11:26:10.415 DEBUG 15028 --- [http-nio-8080-exec-10] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type 
+2020-07-26 11:26:10.417 DEBUG 15028 --- [http-nio-8080-exec-10] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 
+2020-07-26 11:26:10.451 DEBUG 15028 --- [http-nio-8080-exec-10] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 6
+2020-07-26 11:26:10.969 DEBUG 15028 --- [http-nio-8080-exec-10] c.z.m.BlogMapper.selectBlogAll_COUNT     : ==>  Preparing: SELECT count(0) FROM t_blog a, t_type b WHERE a.type_id = b.id 
+2020-07-26 11:26:10.970 DEBUG 15028 --- [http-nio-8080-exec-10] c.z.m.BlogMapper.selectBlogAll_COUNT     : ==> Parameters: 
+2020-07-26 11:26:11.010 DEBUG 15028 --- [http-nio-8080-exec-10] c.z.m.BlogMapper.selectBlogAll_COUNT     : <==      Total: 1
+2020-07-26 11:26:11.016 DEBUG 15028 --- [http-nio-8080-exec-10] com.zwk.mapper.BlogMapper.selectBlogAll  : ==>  Preparing: select a.id,a.title,a.recommend,a.published,a.update_time,b.id as typeId,b.name as typeName from t_blog a,t_type b where a.type_id=b.id LIMIT ? 
+2020-07-26 11:26:11.017 DEBUG 15028 --- [http-nio-8080-exec-10] com.zwk.mapper.BlogMapper.selectBlogAll  : ==> Parameters: 2(Integer)
+2020-07-26 11:26:11.052 DEBUG 15028 --- [http-nio-8080-exec-10] com.zwk.mapper.BlogMapper.selectBlogAll  : <==      Total: 2
+2020-07-26 11:26:12.197 DEBUG 15028 --- [http-nio-8080-exec-1] c.z.mapper.TypeMapper.selectList_COUNT   : ==>  Preparing: SELECT count(0) FROM t_type 
+2020-07-26 11:26:12.198 DEBUG 15028 --- [http-nio-8080-exec-1] c.z.mapper.TypeMapper.selectList_COUNT   : ==> Parameters: 
+2020-07-26 11:26:12.229 DEBUG 15028 --- [http-nio-8080-exec-1] c.z.mapper.TypeMapper.selectList_COUNT   : <==      Total: 1
+2020-07-26 11:26:12.230 DEBUG 15028 --- [http-nio-8080-exec-1] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type LIMIT ? 
+2020-07-26 11:26:12.230 DEBUG 15028 --- [http-nio-8080-exec-1] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 2(Integer)
+2020-07-26 11:26:12.262 DEBUG 15028 --- [http-nio-8080-exec-1] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 2
+2020-07-26 11:26:13.501 DEBUG 15028 --- [http-nio-8080-exec-3] c.zwk.mapper.TagMapper.selectList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_tag 
+2020-07-26 11:26:13.502 DEBUG 15028 --- [http-nio-8080-exec-3] c.zwk.mapper.TagMapper.selectList_COUNT  : ==> Parameters: 
+2020-07-26 11:26:13.532 DEBUG 15028 --- [http-nio-8080-exec-3] c.zwk.mapper.TagMapper.selectList_COUNT  : <==      Total: 1
+2020-07-26 11:26:13.532 DEBUG 15028 --- [http-nio-8080-exec-3] com.zwk.mapper.TagMapper.selectList      : ==>  Preparing: SELECT id,name FROM t_tag LIMIT ? 
+2020-07-26 11:26:13.533 DEBUG 15028 --- [http-nio-8080-exec-3] com.zwk.mapper.TagMapper.selectList      : ==> Parameters: 2(Integer)
+2020-07-26 11:26:13.565 DEBUG 15028 --- [http-nio-8080-exec-3] com.zwk.mapper.TagMapper.selectList      : <==      Total: 2
+2020-07-26 11:38:11.135 DEBUG 15028 --- [http-nio-8080-exec-8] c.zwk.mapper.TagMapper.selectList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_tag 
+2020-07-26 11:38:11.135 DEBUG 15028 --- [http-nio-8080-exec-8] c.zwk.mapper.TagMapper.selectList_COUNT  : ==> Parameters: 
+2020-07-26 11:38:11.174 DEBUG 15028 --- [http-nio-8080-exec-8] c.zwk.mapper.TagMapper.selectList_COUNT  : <==      Total: 1
+2020-07-26 11:38:11.175 DEBUG 15028 --- [http-nio-8080-exec-8] com.zwk.mapper.TagMapper.selectList      : ==>  Preparing: SELECT id,name FROM t_tag LIMIT ? 
+2020-07-26 11:38:11.176 DEBUG 15028 --- [http-nio-8080-exec-8] com.zwk.mapper.TagMapper.selectList      : ==> Parameters: 2(Integer)
+2020-07-26 11:38:11.227 DEBUG 15028 --- [http-nio-8080-exec-8] com.zwk.mapper.TagMapper.selectList      : <==      Total: 2
+2020-07-26 11:47:03.524  INFO 496 --- [main] com.zwk.BlogApplication                  : Starting BlogApplication on DESKTOP-11MH91A with PID 496 (D:\IdeaFile\blog\target\classes started by mrz in D:\IdeaFile\blog)
+2020-07-26 11:47:03.557 DEBUG 496 --- [main] com.zwk.BlogApplication                  : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 11:47:03.558  INFO 496 --- [main] com.zwk.BlogApplication                  : No active profile set, falling back to default profiles: default
+2020-07-26 11:47:06.428  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$35238574] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:06.543  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:06.560  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$66edf435] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:06.570  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$42d17d0d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:06.574  INFO 496 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 11:47:06.638  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:06.747  INFO 496 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 11:47:06.747  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:06.879  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:06.897  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:08.006  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:08.016  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:08.029  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:08.042  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:08.060  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:08.062  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:08.294  INFO 496 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:47:08.784  INFO 496 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-26 11:47:08.794  INFO 496 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-26 11:47:08.794  INFO 496 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-26 11:47:08.944  INFO 496 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-26 11:47:08.945  INFO 496 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5210 ms
+2020-07-26 11:47:09.465  INFO 496 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 11:47:09.581  INFO 496 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 11:47:10.004  INFO 496 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-26 11:47:10.017  INFO 496 --- [main] com.zwk.BlogApplication                  : Started BlogApplication in 7.689 seconds (JVM running for 9.978)
+2020-07-26 11:47:18.326  INFO 496 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590627633; Webstorm-bb7400a0=c3dbb852-b2b7-4b4d-866c-66f33b39efd0] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-26 11:47:18.340  INFO 496 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-26 11:47:18.340  INFO 496 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-26 11:47:18.359  INFO 496 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 18 ms
+2020-07-26 11:47:19.115  INFO 496 --- [http-nio-8080-exec-1] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.IndexController.index', args=[1, 2, {}]}
+2020-07-26 11:47:19.777 DEBUG 496 --- [http-nio-8080-exec-1] c.z.mapper.TypeMapper.selectList_COUNT   : ==>  Preparing: SELECT count(0) FROM t_type 
+2020-07-26 11:47:19.802 DEBUG 496 --- [http-nio-8080-exec-1] c.z.mapper.TypeMapper.selectList_COUNT   : ==> Parameters: 
+2020-07-26 11:47:19.852 DEBUG 496 --- [http-nio-8080-exec-1] c.z.mapper.TypeMapper.selectList_COUNT   : <==      Total: 1
+2020-07-26 11:47:19.856 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type LIMIT ? 
+2020-07-26 11:47:19.856 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 6(Integer)
+2020-07-26 11:47:19.893 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 6
+2020-07-26 11:47:19.903 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:19.903 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 1(Long)
+2020-07-26 11:47:19.940 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 2
+2020-07-26 11:47:19.941 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:19.942 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 5(Long)
+2020-07-26 11:47:19.976 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 11:47:19.977 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:19.978 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 10(Long)
+2020-07-26 11:47:20.013 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 11:47:20.014 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:20.014 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 11(Long)
+2020-07-26 11:47:20.049 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 3
+2020-07-26 11:47:20.049 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:20.051 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 12(Long)
+2020-07-26 11:47:20.085 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 11:47:20.085 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:20.086 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 13(Long)
+2020-07-26 11:47:20.121 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 11:47:20.132 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.TagMapper.selectList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_tag 
+2020-07-26 11:47:20.132 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.TagMapper.selectList_COUNT  : ==> Parameters: 
+2020-07-26 11:47:20.167 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.TagMapper.selectList_COUNT  : <==      Total: 1
+2020-07-26 11:47:20.168 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectList      : ==>  Preparing: SELECT id,name FROM t_tag LIMIT ? 
+2020-07-26 11:47:20.168 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectList      : ==> Parameters: 6(Integer)
+2020-07-26 11:47:20.203 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.TagMapper.selectList      : <==      Total: 5
+2020-07-26 11:47:20.204 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:20.205 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 4(Long)
+2020-07-26 11:47:20.245 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 6
+2020-07-26 11:47:20.246 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:20.247 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 5(Long)
+2020-07-26 11:47:20.291 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 5
+2020-07-26 11:47:20.292 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:20.293 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 6(Long)
+2020-07-26 11:47:20.327 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 11:47:20.327 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:20.328 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 7(Long)
+2020-07-26 11:47:20.362 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 11:47:20.363 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:20.364 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 8(Long)
+2020-07-26 11:47:20.397 DEBUG 496 --- [http-nio-8080-exec-1] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 0
+2020-07-26 11:47:20.402 DEBUG 496 --- [http-nio-8080-exec-1] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog WHERE recommend = 1 AND published = 1 
+2020-07-26 11:47:20.403 DEBUG 496 --- [http-nio-8080-exec-1] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==> Parameters: 
+2020-07-26 11:47:20.440 DEBUG 496 --- [http-nio-8080-exec-1] c.z.m.BlogMapper.getRecommendBlog_COUNT  : <==      Total: 1
+2020-07-26 11:47:20.442 DEBUG 496 --- [http-nio-8080-exec-1] c.z.mapper.BlogMapper.getRecommendBlog   : ==>  Preparing: select id,title from t_blog where recommend=1 and published=1 order by update_time desc LIMIT ? 
+2020-07-26 11:47:20.443 DEBUG 496 --- [http-nio-8080-exec-1] c.z.mapper.BlogMapper.getRecommendBlog   : ==> Parameters: 6(Integer)
+2020-07-26 11:47:20.479 DEBUG 496 --- [http-nio-8080-exec-1] c.z.mapper.BlogMapper.getRecommendBlog   : <==      Total: 5
+2020-07-26 11:47:20.483 DEBUG 496 --- [http-nio-8080-exec-1] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t, t_user u WHERE b.type_id = t.id AND b.user_id = u.id AND b.published = 1 
+2020-07-26 11:47:20.483 DEBUG 496 --- [http-nio-8080-exec-1] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==> Parameters: 
+2020-07-26 11:47:20.518 DEBUG 496 --- [http-nio-8080-exec-1] c.z.m.BlogMapper.getIndexBlog_COUNT      : <==      Total: 1
+2020-07-26 11:47:20.518 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.BlogMapper.getIndexBlog   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.published=1 order by b.update_time desc LIMIT ? 
+2020-07-26 11:47:20.518 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.BlogMapper.getIndexBlog   : ==> Parameters: 2(Integer)
+2020-07-26 11:47:20.556 DEBUG 496 --- [http-nio-8080-exec-1] com.zwk.mapper.BlogMapper.getIndexBlog   : <==      Total: 2
+2020-07-26 11:47:20.557  INFO 496 --- [http-nio-8080-exec-1] com.zwk.aspect.LogAspect                 : 返回后index
+2020-07-26 11:47:20.558  INFO 496 --- [http-nio-8080-exec-1] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 11:47:31.897  INFO 496 --- [http-nio-8080-exec-7] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/blog/6', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.IndexController.blog', args=[6, {}]}
+2020-07-26 11:47:31.939 DEBUG 496 --- [http-nio-8080-exec-7] c.zwk.mapper.BlogMapper.getDetailedBlog  : ==>  Preparing: select b.id,b.title,b.first_picture,b.flag,b.content,b.views,b.update_time,b.commentabled,b.appreciation,b.share_statement,b.tag_ids, u.avatar,u.nickname from t_blog b,t_user u where b.user_id=u.id and b.published=1 and b.id=? 
+2020-07-26 11:47:31.940 DEBUG 496 --- [http-nio-8080-exec-7] c.zwk.mapper.BlogMapper.getDetailedBlog  : ==> Parameters: 6(Long)
+2020-07-26 11:47:32.189 DEBUG 496 --- [http-nio-8080-exec-7] c.zwk.mapper.BlogMapper.getDetailedBlog  : <==      Total: 1
+2020-07-26 11:47:32.192 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : ==>  Preparing: SELECT id,name FROM t_tag WHERE id=? 
+2020-07-26 11:47:32.192 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : ==> Parameters: 4(Long)
+2020-07-26 11:47:32.502 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : <==      Total: 1
+2020-07-26 11:47:32.503 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : ==>  Preparing: SELECT id,name FROM t_tag WHERE id=? 
+2020-07-26 11:47:32.504 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : ==> Parameters: 5(Long)
+2020-07-26 11:47:32.830 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.TagMapper.selectById      : <==      Total: 1
+2020-07-26 11:47:32.869 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.BlogMapper.updateViews    : ==>  Preparing: update t_blog set views=views+1 where id=? 
+2020-07-26 11:47:32.871 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.BlogMapper.updateViews    : ==> Parameters: 6(Long)
+2020-07-26 11:47:33.013 DEBUG 496 --- [http-nio-8080-exec-7] com.zwk.mapper.BlogMapper.updateViews    : <==    Updates: 1
+2020-07-26 11:47:33.585  INFO 496 --- [http-nio-8080-exec-7] com.zwk.aspect.LogAspect                 : 返回后blog
+2020-07-26 11:47:33.586  INFO 496 --- [http-nio-8080-exec-7] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 11:47:33.679 ERROR 496 --- [http-nio-8080-exec-8] c.z.handler.ControllerExceptionHandler   : Request Url : org.apache.shiro.web.servlet.ShiroHttpServletRequest@12f3ce52, Exception : Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "www.out.pp"
+2020-07-26 11:47:42.493  INFO 496 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.IndexController.index', args=[1, 2, {}]}
+2020-07-26 11:47:42.495 DEBUG 496 --- [http-nio-8080-exec-2] c.z.mapper.TypeMapper.selectList_COUNT   : ==>  Preparing: SELECT count(0) FROM t_type 
+2020-07-26 11:47:42.496 DEBUG 496 --- [http-nio-8080-exec-2] c.z.mapper.TypeMapper.selectList_COUNT   : ==> Parameters: 
+2020-07-26 11:47:42.536 DEBUG 496 --- [http-nio-8080-exec-2] c.z.mapper.TypeMapper.selectList_COUNT   : <==      Total: 1
+2020-07-26 11:47:42.538 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type LIMIT ? 
+2020-07-26 11:47:42.539 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 6(Integer)
+2020-07-26 11:47:42.573 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 6
+2020-07-26 11:47:42.574 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:42.575 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 1(Long)
+2020-07-26 11:47:42.610 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 2
+2020-07-26 11:47:42.611 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:42.612 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 5(Long)
+2020-07-26 11:47:42.651 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 11:47:42.653 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:42.654 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 10(Long)
+2020-07-26 11:47:42.692 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 11:47:42.692 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:42.693 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 11(Long)
+2020-07-26 11:47:42.754 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 3
+2020-07-26 11:47:42.755 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:42.756 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 12(Long)
+2020-07-26 11:47:42.790 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 11:47:42.791 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 11:47:42.792 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 13(Long)
+2020-07-26 11:47:43.190 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 11:47:43.193 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.TagMapper.selectList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_tag 
+2020-07-26 11:47:43.194 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.TagMapper.selectList_COUNT  : ==> Parameters: 
+2020-07-26 11:47:43.230 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.TagMapper.selectList_COUNT  : <==      Total: 1
+2020-07-26 11:47:43.232 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.TagMapper.selectList      : ==>  Preparing: SELECT id,name FROM t_tag LIMIT ? 
+2020-07-26 11:47:43.232 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.TagMapper.selectList      : ==> Parameters: 6(Integer)
+2020-07-26 11:47:43.269 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.TagMapper.selectList      : <==      Total: 5
+2020-07-26 11:47:43.270 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:43.270 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 4(Long)
+2020-07-26 11:47:43.310 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 6
+2020-07-26 11:47:43.311 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:43.311 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 5(Long)
+2020-07-26 11:47:43.352 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 5
+2020-07-26 11:47:43.353 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:43.354 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 6(Long)
+2020-07-26 11:47:43.391 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 11:47:43.392 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:43.393 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 7(Long)
+2020-07-26 11:47:43.434 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 11:47:43.437 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 11:47:43.438 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 8(Long)
+2020-07-26 11:47:43.700 DEBUG 496 --- [http-nio-8080-exec-2] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 0
+2020-07-26 11:47:43.705 DEBUG 496 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog WHERE recommend = 1 AND published = 1 
+2020-07-26 11:47:43.706 DEBUG 496 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==> Parameters: 
+2020-07-26 11:47:44.018 DEBUG 496 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getRecommendBlog_COUNT  : <==      Total: 1
+2020-07-26 11:47:44.019 DEBUG 496 --- [http-nio-8080-exec-2] c.z.mapper.BlogMapper.getRecommendBlog   : ==>  Preparing: select id,title from t_blog where recommend=1 and published=1 order by update_time desc LIMIT ? 
+2020-07-26 11:47:44.020 DEBUG 496 --- [http-nio-8080-exec-2] c.z.mapper.BlogMapper.getRecommendBlog   : ==> Parameters: 6(Integer)
+2020-07-26 11:47:44.318 DEBUG 496 --- [http-nio-8080-exec-2] c.z.mapper.BlogMapper.getRecommendBlog   : <==      Total: 5
+2020-07-26 11:47:44.325 DEBUG 496 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t, t_user u WHERE b.type_id = t.id AND b.user_id = u.id AND b.published = 1 
+2020-07-26 11:47:44.326 DEBUG 496 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==> Parameters: 
+2020-07-26 11:47:44.677 DEBUG 496 --- [http-nio-8080-exec-2] c.z.m.BlogMapper.getIndexBlog_COUNT      : <==      Total: 1
+2020-07-26 11:47:44.678 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.BlogMapper.getIndexBlog   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.published=1 order by b.update_time desc LIMIT ? 
+2020-07-26 11:47:44.678 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.BlogMapper.getIndexBlog   : ==> Parameters: 2(Integer)
+2020-07-26 11:47:44.928 DEBUG 496 --- [http-nio-8080-exec-2] com.zwk.mapper.BlogMapper.getIndexBlog   : <==      Total: 2
+2020-07-26 11:47:44.929  INFO 496 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : 返回后index
+2020-07-26 11:47:44.929  INFO 496 --- [http-nio-8080-exec-2] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 11:51:14.883  INFO 22732 --- [main] com.zwk.BlogApplication                  : Starting BlogApplication on DESKTOP-11MH91A with PID 22732 (D:\IdeaFile\blog\target\classes started by mrz in D:\IdeaFile\blog)
+2020-07-26 11:51:14.932 DEBUG 22732 --- [main] com.zwk.BlogApplication                  : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 11:51:14.933  INFO 22732 --- [main] com.zwk.BlogApplication                  : No active profile set, falling back to default profiles: default
+2020-07-26 11:51:19.506  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$9b06eb2f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:19.869  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:19.917  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$ccd159f0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:19.943  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$a8b4e2c8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:19.953  INFO 22732 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 11:51:20.100  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:20.304  INFO 22732 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 11:51:20.305  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:20.483  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:20.508  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:22.670  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:22.691  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:22.716  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:22.726  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:22.766  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:22.774  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:23.454  INFO 22732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 11:51:24.653  INFO 22732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-26 11:51:24.672  INFO 22732 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-26 11:51:24.672  INFO 22732 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-26 11:51:25.050  INFO 22732 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-26 11:51:25.052  INFO 22732 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9930 ms
+2020-07-26 11:51:26.059  INFO 22732 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 11:51:26.281  INFO 22732 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 11:51:27.123  INFO 22732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-26 11:51:27.147  INFO 22732 --- [main] com.zwk.BlogApplication                  : Started BlogApplication in 13.945 seconds (JVM running for 18.065)
+2020-07-26 11:51:38.546  INFO 22732 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590627633; Webstorm-bb7400a0=c3dbb852-b2b7-4b4d-866c-66f33b39efd0] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-26 11:51:38.584  INFO 22732 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-26 11:51:38.585  INFO 22732 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-26 11:51:38.617  INFO 22732 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 25 ms
+2020-07-26 17:40:51.879  INFO 22732 --- [http-nio-8080-exec-3] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.IndexController.index', args=[1, 2, {}]}
+2020-07-26 17:40:53.281 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.mapper.TypeMapper.selectList_COUNT   : ==>  Preparing: SELECT count(0) FROM t_type 
+2020-07-26 17:40:53.366 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.mapper.TypeMapper.selectList_COUNT   : ==> Parameters: 
+2020-07-26 17:40:53.461 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.mapper.TypeMapper.selectList_COUNT   : <==      Total: 1
+2020-07-26 17:40:53.466 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type LIMIT ? 
+2020-07-26 17:40:53.467 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 6(Integer)
+2020-07-26 17:40:53.503 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 6
+2020-07-26 17:40:53.514 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.514 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 1(Long)
+2020-07-26 17:40:53.555 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 2
+2020-07-26 17:40:53.555 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.556 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 5(Long)
+2020-07-26 17:40:53.600 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 17:40:53.601 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.602 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 10(Long)
+2020-07-26 17:40:53.641 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 17:40:53.642 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.643 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 11(Long)
+2020-07-26 17:40:53.678 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 3
+2020-07-26 17:40:53.679 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.680 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 12(Long)
+2020-07-26 17:40:53.715 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 17:40:53.716 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.717 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 13(Long)
+2020-07-26 17:40:53.750 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 17:40:53.755 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.TagMapper.selectList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_tag 
+2020-07-26 17:40:53.755 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.TagMapper.selectList_COUNT  : ==> Parameters: 
+2020-07-26 17:40:53.776  INFO 22732 --- [http-nio-8080-exec-4] com.zwk.aspect.LogAspect                 : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.zwk.controller.IndexController.index', args=[1, 2, {}]}
+2020-07-26 17:40:53.777 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.mapper.TypeMapper.selectList_COUNT   : ==>  Preparing: SELECT count(0) FROM t_type 
+2020-07-26 17:40:53.778 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.mapper.TypeMapper.selectList_COUNT   : ==> Parameters: 
+2020-07-26 17:40:53.800 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.TagMapper.selectList_COUNT  : <==      Total: 1
+2020-07-26 17:40:53.800 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.TagMapper.selectList      : ==>  Preparing: SELECT id,name FROM t_tag LIMIT ? 
+2020-07-26 17:40:53.800 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.TagMapper.selectList      : ==> Parameters: 6(Integer)
+2020-07-26 17:40:53.811 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.mapper.TypeMapper.selectList_COUNT   : <==      Total: 1
+2020-07-26 17:40:53.812 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type LIMIT ? 
+2020-07-26 17:40:53.812 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 6(Integer)
+2020-07-26 17:40:53.837 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.TagMapper.selectList      : <==      Total: 5
+2020-07-26 17:40:53.838 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:53.838 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 4(Long)
+2020-07-26 17:40:53.846 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 6
+2020-07-26 17:40:53.847 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.847 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 1(Long)
+2020-07-26 17:40:53.875 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 6
+2020-07-26 17:40:53.876 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:53.876 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 5(Long)
+2020-07-26 17:40:53.896 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 2
+2020-07-26 17:40:53.897 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.898 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 5(Long)
+2020-07-26 17:40:53.924 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 5
+2020-07-26 17:40:53.925 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:53.926 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 6(Long)
+2020-07-26 17:40:53.953 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 17:40:53.955 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.956 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 10(Long)
+2020-07-26 17:40:53.963 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 17:40:53.964 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:53.964 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 7(Long)
+2020-07-26 17:40:53.989 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 1
+2020-07-26 17:40:53.990 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:53.991 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 11(Long)
+2020-07-26 17:40:54.000 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 17:40:54.000 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:54.001 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 8(Long)
+2020-07-26 17:40:54.036 DEBUG 22732 --- [http-nio-8080-exec-3] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 0
+2020-07-26 17:40:54.037 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 3
+2020-07-26 17:40:54.037 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:54.038 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 12(Long)
+2020-07-26 17:40:54.061 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog WHERE recommend = 1 AND published = 1 
+2020-07-26 17:40:54.062 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==> Parameters: 
+2020-07-26 17:40:54.072 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 17:40:54.073 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.type_id=? and b.published=1 
+2020-07-26 17:40:54.073 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : ==> Parameters: 13(Long)
+2020-07-26 17:40:54.098 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.m.BlogMapper.getRecommendBlog_COUNT  : <==      Total: 1
+2020-07-26 17:40:54.098 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.mapper.BlogMapper.getRecommendBlog   : ==>  Preparing: select id,title from t_blog where recommend=1 and published=1 order by update_time desc LIMIT ? 
+2020-07-26 17:40:54.099 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.mapper.BlogMapper.getRecommendBlog   : ==> Parameters: 6(Integer)
+2020-07-26 17:40:54.107 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTypeId  : <==      Total: 0
+2020-07-26 17:40:54.109 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.TagMapper.selectList_COUNT  : ==>  Preparing: SELECT count(0) FROM t_tag 
+2020-07-26 17:40:54.110 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.TagMapper.selectList_COUNT  : ==> Parameters: 
+2020-07-26 17:40:54.133 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.mapper.BlogMapper.getRecommendBlog   : <==      Total: 5
+2020-07-26 17:40:54.138 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t, t_user u WHERE b.type_id = t.id AND b.user_id = u.id AND b.published = 1 
+2020-07-26 17:40:54.138 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==> Parameters: 
+2020-07-26 17:40:54.143 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.TagMapper.selectList_COUNT  : <==      Total: 1
+2020-07-26 17:40:54.144 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.TagMapper.selectList      : ==>  Preparing: SELECT id,name FROM t_tag LIMIT ? 
+2020-07-26 17:40:54.144 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.TagMapper.selectList      : ==> Parameters: 6(Integer)
+2020-07-26 17:40:54.176 DEBUG 22732 --- [http-nio-8080-exec-3] c.z.m.BlogMapper.getIndexBlog_COUNT      : <==      Total: 1
+2020-07-26 17:40:54.176 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.TagMapper.selectList      : <==      Total: 5
+2020-07-26 17:40:54.176 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.BlogMapper.getIndexBlog   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.published=1 order by b.update_time desc LIMIT ? 
+2020-07-26 17:40:54.176 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:54.177 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.BlogMapper.getIndexBlog   : ==> Parameters: 2(Integer)
+2020-07-26 17:40:54.177 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 4(Long)
+2020-07-26 17:40:54.211 DEBUG 22732 --- [http-nio-8080-exec-3] com.zwk.mapper.BlogMapper.getIndexBlog   : <==      Total: 2
+2020-07-26 17:40:54.212  INFO 22732 --- [http-nio-8080-exec-3] com.zwk.aspect.LogAspect                 : 返回后index
+2020-07-26 17:40:54.212 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 6
+2020-07-26 17:40:54.213  INFO 22732 --- [http-nio-8080-exec-3] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 17:40:54.213 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:54.214 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 5(Long)
+2020-07-26 17:40:54.253 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 5
+2020-07-26 17:40:54.253 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:54.254 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 6(Long)
+2020-07-26 17:40:54.287 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 17:40:54.288 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:54.288 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 7(Long)
+2020-07-26 17:40:54.321 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 1
+2020-07-26 17:40:54.321 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and FIND_IN_SET(?, b.tag_ids) and b.published=1 
+2020-07-26 17:40:54.322 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : ==> Parameters: 8(Long)
+2020-07-26 17:40:54.358 DEBUG 22732 --- [http-nio-8080-exec-4] c.zwk.mapper.BlogMapper.getBlogByTagId   : <==      Total: 0
+2020-07-26 17:40:54.360 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog WHERE recommend = 1 AND published = 1 
+2020-07-26 17:40:54.361 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.m.BlogMapper.getRecommendBlog_COUNT  : ==> Parameters: 
+2020-07-26 17:40:54.392 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.m.BlogMapper.getRecommendBlog_COUNT  : <==      Total: 1
+2020-07-26 17:40:54.392 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.mapper.BlogMapper.getRecommendBlog   : ==>  Preparing: select id,title from t_blog where recommend=1 and published=1 order by update_time desc LIMIT ? 
+2020-07-26 17:40:54.393 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.mapper.BlogMapper.getRecommendBlog   : ==> Parameters: 6(Integer)
+2020-07-26 17:40:54.426 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.mapper.BlogMapper.getRecommendBlog   : <==      Total: 5
+2020-07-26 17:40:54.428 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==>  Preparing: SELECT count(0) FROM t_blog b, t_type t, t_user u WHERE b.type_id = t.id AND b.user_id = u.id AND b.published = 1 
+2020-07-26 17:40:54.428 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.m.BlogMapper.getIndexBlog_COUNT      : ==> Parameters: 
+2020-07-26 17:40:54.460 DEBUG 22732 --- [http-nio-8080-exec-4] c.z.m.BlogMapper.getIndexBlog_COUNT      : <==      Total: 1
+2020-07-26 17:40:54.461 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.BlogMapper.getIndexBlog   : ==>  Preparing: select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u where b.type_id=t.id and b.user_id=u.id and b.published=1 order by b.update_time desc LIMIT ? 
+2020-07-26 17:40:54.461 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.BlogMapper.getIndexBlog   : ==> Parameters: 2(Integer)
+2020-07-26 17:40:54.496 DEBUG 22732 --- [http-nio-8080-exec-4] com.zwk.mapper.BlogMapper.getIndexBlog   : <==      Total: 2
+2020-07-26 17:40:54.497  INFO 22732 --- [http-nio-8080-exec-4] com.zwk.aspect.LogAspect                 : 返回后index
+2020-07-26 17:40:54.497  INFO 22732 --- [http-nio-8080-exec-4] com.zwk.aspect.LogAspect                 : 我是后置通知
+2020-07-26 17:41:55.486  INFO 26008 --- [main] com.zwk.BlogApplication                  : Starting BlogApplication on DESKTOP-11MH91A with PID 26008 (D:\IdeaFile\blog\target\classes started by mrz in D:\IdeaFile\blog)
+2020-07-26 17:41:55.507 DEBUG 26008 --- [main] com.zwk.BlogApplication                  : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 17:41:55.507  INFO 26008 --- [main] com.zwk.BlogApplication                  : No active profile set, falling back to default profiles: default
+2020-07-26 17:42:00.138  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$4d0d751d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:00.475  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:00.537  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$7ed7e3de] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:00.571  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$5abb6cb6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:00.579  INFO 26008 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 17:42:00.769  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:01.071  INFO 26008 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 17:42:01.072  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:01.363  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:01.399  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:04.061  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:04.084  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:04.113  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:04.129  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:04.164  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:04.166  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:04.783  INFO 26008 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:42:06.074  INFO 26008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-26 17:42:06.108  INFO 26008 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-26 17:42:06.110  INFO 26008 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-26 17:42:06.546  INFO 26008 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-26 17:42:06.546  INFO 26008 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 10877 ms
+2020-07-26 17:42:08.064  INFO 26008 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 17:42:08.406  INFO 26008 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 17:42:09.663  INFO 26008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-26 17:42:09.694  INFO 26008 --- [main] com.zwk.BlogApplication                  : Started BlogApplication in 16.316 seconds (JVM running for 20.142)
+2020-07-26 17:44:09.052  INFO 26008 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1590627633; Webstorm-bb7400a0=c3dbb852-b2b7-4b4d-866c-66f33b39efd0; JSESSIONID=B399B3292C1DDE76017FF384EF8EF406] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-26 17:44:09.064  INFO 26008 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-26 17:44:09.064  INFO 26008 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-26 17:44:09.092  INFO 26008 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 28 ms
+2020-07-26 17:45:29.750 DEBUG 26008 --- [http-nio-8080-exec-5] com.zwk.mapper.UserMapper.checkUser      : ==>  Preparing: select * from t_user where username=? 
+2020-07-26 17:45:29.798 DEBUG 26008 --- [http-nio-8080-exec-5] com.zwk.mapper.UserMapper.checkUser      : ==> Parameters: admin(String)
+2020-07-26 17:45:29.908 DEBUG 26008 --- [http-nio-8080-exec-5] com.zwk.mapper.UserMapper.checkUser      : <==      Total: 1
+2020-07-26 17:47:19.774 DEBUG 26008 --- [http-nio-8080-exec-3] com.zwk.mapper.UserMapper.checkUser      : ==>  Preparing: select * from t_user where username=? 
+2020-07-26 17:47:19.774 DEBUG 26008 --- [http-nio-8080-exec-3] com.zwk.mapper.UserMapper.checkUser      : ==> Parameters: admin(String)
+2020-07-26 17:47:19.810 DEBUG 26008 --- [http-nio-8080-exec-3] com.zwk.mapper.UserMapper.checkUser      : <==      Total: 1
+2020-07-26 17:47:26.067 DEBUG 26008 --- [http-nio-8080-exec-6] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type 
+2020-07-26 17:47:26.068 DEBUG 26008 --- [http-nio-8080-exec-6] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 
+2020-07-26 17:47:26.103 DEBUG 26008 --- [http-nio-8080-exec-6] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 6
+2020-07-26 17:47:26.627 DEBUG 26008 --- [http-nio-8080-exec-6] c.z.m.BlogMapper.selectBlogAll_COUNT     : ==>  Preparing: SELECT count(0) FROM t_blog a, t_type b WHERE a.type_id = b.id 
+2020-07-26 17:47:26.629 DEBUG 26008 --- [http-nio-8080-exec-6] c.z.m.BlogMapper.selectBlogAll_COUNT     : ==> Parameters: 
+2020-07-26 17:47:26.664 DEBUG 26008 --- [http-nio-8080-exec-6] c.z.m.BlogMapper.selectBlogAll_COUNT     : <==      Total: 1
+2020-07-26 17:47:26.669 DEBUG 26008 --- [http-nio-8080-exec-6] com.zwk.mapper.BlogMapper.selectBlogAll  : ==>  Preparing: select a.id,a.title,a.recommend,a.published,a.update_time,b.id as typeId,b.name as typeName from t_blog a,t_type b where a.type_id=b.id LIMIT ? 
+2020-07-26 17:47:26.670 DEBUG 26008 --- [http-nio-8080-exec-6] com.zwk.mapper.BlogMapper.selectBlogAll  : ==> Parameters: 2(Integer)
+2020-07-26 17:47:26.714 DEBUG 26008 --- [http-nio-8080-exec-6] com.zwk.mapper.BlogMapper.selectBlogAll  : <==      Total: 2
+2020-07-26 17:47:27.723 DEBUG 26008 --- [http-nio-8080-exec-7] c.z.mapper.TypeMapper.selectList_COUNT   : ==>  Preparing: SELECT count(0) FROM t_type 
+2020-07-26 17:47:27.724 DEBUG 26008 --- [http-nio-8080-exec-7] c.z.mapper.TypeMapper.selectList_COUNT   : ==> Parameters: 
+2020-07-26 17:47:27.772 DEBUG 26008 --- [http-nio-8080-exec-7] c.z.mapper.TypeMapper.selectList_COUNT   : <==      Total: 1
+2020-07-26 17:47:27.773 DEBUG 26008 --- [http-nio-8080-exec-7] com.zwk.mapper.TypeMapper.selectList     : ==>  Preparing: SELECT id,name FROM t_type LIMIT ? 
+2020-07-26 17:47:27.774 DEBUG 26008 --- [http-nio-8080-exec-7] com.zwk.mapper.TypeMapper.selectList     : ==> Parameters: 2(Integer)
+2020-07-26 17:47:27.877 DEBUG 26008 --- [http-nio-8080-exec-7] com.zwk.mapper.TypeMapper.selectList     : <==      Total: 2
+2020-07-26 17:50:00.643  INFO 27028 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 27028 (started by mrz in D:\IdeaFile\blog)
+2020-07-26 17:50:00.652 DEBUG 27028 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 17:50:00.654  INFO 27028 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-26 17:50:04.044  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$8e36330a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:04.411  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:04.460  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$c000a1cb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:04.498  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$9be42aa3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:04.505  INFO 27028 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 17:50:04.692  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:05.254  INFO 27028 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 17:50:05.254  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:05.585  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:05.633  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:08.319  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:08.472  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:08.506  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:08.529  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy78] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:08.586  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:08.589  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:09.690  INFO 27028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:50:11.686  INFO 27028 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 17:50:12.010  INFO 27028 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 17:50:13.842  INFO 27028 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 14.803 seconds (JVM running for 17.738)
+2020-07-26 17:50:16.175  INFO 27028 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-26 17:50:16.189  INFO 27028 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-26 17:50:16.193  INFO 27028 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-26 17:51:37.001  INFO 27140 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 27140 (started by mrz in D:\IdeaFile\blog)
+2020-07-26 17:51:37.003 DEBUG 27140 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 17:51:37.005  INFO 27140 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-26 17:51:38.828  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$9fded3b4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:39.018  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:39.061  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$d1a94275] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:39.108  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$ad8ccb4d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:39.117  INFO 27140 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 17:51:39.204  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:39.685  INFO 27140 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 17:51:39.685  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:39.997  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:40.030  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:42.204  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:42.230  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:42.242  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:42.254  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy78] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:42.281  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:42.282  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:42.990  INFO 27140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 17:51:44.479  INFO 27140 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 17:51:44.724  INFO 27140 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 17:51:45.585  INFO 27140 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 9.419 seconds (JVM running for 10.902)
+2020-07-26 17:51:46.118  INFO 27140 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-26 17:51:46.120  INFO 27140 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-26 17:51:46.123  INFO 27140 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-26 18:12:56.524  INFO 15076 --- [main] com.zwk.BlogApplication                  : Starting BlogApplication on DESKTOP-11MH91A with PID 15076 (D:\IdeaFile\blog\target\classes started by mrz in D:\IdeaFile\blog)
+2020-07-26 18:12:56.530 DEBUG 15076 --- [main] com.zwk.BlogApplication                  : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 18:12:56.532  INFO 15076 --- [main] com.zwk.BlogApplication                  : No active profile set, falling back to default profiles: default
+2020-07-26 18:12:58.244  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$41cea14a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:58.402  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:58.427  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$7399100b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:58.438  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$4f7c98e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:58.447  INFO 15076 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 18:12:58.536  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:58.658  INFO 15076 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 18:12:58.660  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:58.784  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:58.809  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:59.779  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:59.785  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:59.794  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:59.798  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:59.813  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:59.813  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:12:59.969  INFO 15076 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:00.385  INFO 15076 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-26 18:13:00.396  INFO 15076 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-26 18:13:00.396  INFO 15076 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-26 18:13:00.539  INFO 15076 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-26 18:13:00.540  INFO 15076 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3891 ms
+2020-07-26 18:13:01.045  INFO 15076 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:13:01.168  INFO 15076 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 18:13:01.570  INFO 15076 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-26 18:13:01.582  INFO 15076 --- [main] com.zwk.BlogApplication                  : Started BlogApplication in 5.995 seconds (JVM running for 7.868)
+2020-07-26 18:13:53.754  INFO 15868 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 15868 (started by mrz in D:\IdeaFile\blog)
+2020-07-26 18:13:53.762 DEBUG 15868 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 18:13:53.766  INFO 15868 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-26 18:13:56.171  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$89ab7b97] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:56.570  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:56.612  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$bb75ea58] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:56.653  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$97597330] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:56.673  INFO 15868 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 18:13:56.834  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:57.224  INFO 15868 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 18:13:57.227  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:57.438  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:57.484  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:59.487  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:59.576  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:59.609  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:59.634  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy78] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:59.702  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:13:59.707  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:00.776  INFO 15868 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:02.588  INFO 15868 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:14:02.886  INFO 15868 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 18:14:04.124  INFO 15868 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 11.803 seconds (JVM running for 14.051)
+2020-07-26 18:14:04.876  INFO 15868 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:14:04.877  INFO 15868 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-26 18:14:04.884  INFO 15868 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-26 18:14:41.061  INFO 28424 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 28424 (started by mrz in D:\IdeaFile\blog)
+2020-07-26 18:14:41.063 DEBUG 28424 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 18:14:41.066  INFO 28424 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-26 18:14:44.424  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$e1afe6a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:44.715  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:44.759  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$3fe56d2b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:44.794  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$1bc8f603] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:44.804  INFO 28424 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 18:14:44.970  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:45.430  INFO 28424 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 18:14:45.431  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:45.811  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:45.878  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:47.729  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:47.769  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:47.787  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:47.802  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy78] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:47.841  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:47.843  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:49.625  INFO 28424 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:14:52.224  INFO 28424 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:14:52.624  INFO 28424 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 18:14:54.023  INFO 28424 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 13.95 seconds (JVM running for 16.737)
+2020-07-26 18:14:55.337  INFO 28424 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:14:55.339  INFO 28424 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-26 18:14:55.346  INFO 28424 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-26 18:20:24.364  INFO 28792 --- [main] com.zwk.BlogApplication                  : Starting BlogApplication on DESKTOP-11MH91A with PID 28792 (D:\IdeaFile\blog\target\classes started by mrz in D:\IdeaFile\blog)
+2020-07-26 18:20:24.369 DEBUG 28792 --- [main] com.zwk.BlogApplication                  : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 18:20:24.370  INFO 28792 --- [main] com.zwk.BlogApplication                  : No active profile set, falling back to default profiles: default
+2020-07-26 18:20:26.938  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$655cb4a7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:27.130  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:27.166  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$97272368] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:27.184  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$730aac40] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:27.189  INFO 28792 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 18:20:27.268  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:27.396  INFO 28792 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 18:20:27.396  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:27.529  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:27.554  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:28.834  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:28.847  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:28.857  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:28.865  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:28.884  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:28.884  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:29.144  INFO 28792 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:20:29.661  INFO 28792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-26 18:20:29.679  INFO 28792 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-26 18:20:29.680  INFO 28792 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-26 18:20:29.892  INFO 28792 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-26 18:20:29.894  INFO 28792 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5374 ms
+2020-07-26 18:20:30.916  INFO 28792 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:20:31.357  INFO 28792 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 18:20:32.236  INFO 28792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-26 18:20:32.251  INFO 28792 --- [main] com.zwk.BlogApplication                  : Started BlogApplication in 9.699 seconds (JVM running for 12.683)
+2020-07-26 18:21:35.357  INFO 28792 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1576475385,1576479826,1576482583; Hm_lvt_bdb993b828cbe079a7fbc1a951f44726=1580621814; __utma=96992031.1890151016.1583991940.1583991940.1583991940.1; __utmz=96992031.1583991940.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-26 18:21:35.365  INFO 28792 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-26 18:21:35.365  INFO 28792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-26 18:21:35.381  INFO 28792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-07-26 18:21:41.128 DEBUG 28792 --- [http-nio-8080-exec-2] com.zwk.mapper.UserMapper.checkUser      : ==>  Preparing: select * from t_user where username=? 
+2020-07-26 18:21:41.169 DEBUG 28792 --- [http-nio-8080-exec-2] com.zwk.mapper.UserMapper.checkUser      : ==> Parameters: admin(String)
+2020-07-26 18:21:41.242 DEBUG 28792 --- [http-nio-8080-exec-2] com.zwk.mapper.UserMapper.checkUser      : <==      Total: 1
+2020-07-26 18:28:24.431  INFO 14608 --- [main] com.zwk.BlogApplication                  : Starting BlogApplication on DESKTOP-11MH91A with PID 14608 (D:\IdeaFile\blog\target\classes started by mrz in D:\IdeaFile\blog)
+2020-07-26 18:28:24.436 DEBUG 14608 --- [main] com.zwk.BlogApplication                  : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 18:28:24.436  INFO 14608 --- [main] com.zwk.BlogApplication                  : No active profile set, falling back to default profiles: default
+2020-07-26 18:28:26.285  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$b6d9ad1e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:26.409  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:26.425  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$e8a41bdf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:26.436  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$c487a4b7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:26.439  INFO 14608 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 18:28:26.497  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:26.581  INFO 14608 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 18:28:26.581  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:26.663  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:26.678  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:27.689  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:27.703  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:27.713  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:27.718  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:27.732  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:27.733  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:27.919  INFO 14608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:28:28.367  INFO 14608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-26 18:28:28.375  INFO 14608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-26 18:28:28.376  INFO 14608 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-26 18:28:28.521  INFO 14608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-26 18:28:28.521  INFO 14608 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3885 ms
+2020-07-26 18:28:29.084  INFO 14608 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:28:29.202  INFO 14608 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 18:28:29.617  INFO 14608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-26 18:28:29.629  INFO 14608 --- [main] com.zwk.BlogApplication                  : Started BlogApplication in 6.43 seconds (JVM running for 8.53)
+2020-07-26 18:31:14.491  INFO 19116 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 19116 (started by mrz in D:\IdeaFile\blog)
+2020-07-26 18:31:14.494 DEBUG 19116 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 18:31:14.495  INFO 19116 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-26 18:31:17.836  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$cf5fdb65] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:18.152  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:18.196  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$12a4a26] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:18.233  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$dd0dd2fe] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:18.241  INFO 19116 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 18:31:18.433  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:18.975  INFO 19116 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 18:31:18.975  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:19.304  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:19.342  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:20.699  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:20.734  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:20.750  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:20.783  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy78] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:20.853  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:20.855  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:21.758  INFO 19116 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:31:25.617  INFO 19116 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:31:26.273  INFO 19116 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 18:31:27.585  INFO 19116 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 14.205 seconds (JVM running for 16.313)
+2020-07-26 18:31:28.833  INFO 19116 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:31:28.841  INFO 19116 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-26 18:31:28.848  INFO 19116 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-26 18:35:06.902  INFO 24908 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 24908 (started by mrz in D:\IdeaFile\blog)
+2020-07-26 18:35:06.908 DEBUG 24908 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-26 18:35:06.916  INFO 24908 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-26 18:35:09.680  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.zwk.config.ShiroConfig$$EnhancerBySpringCGLIB$$9fded3b4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:10.051  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:10.135  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$d1a94275] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:10.164  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure$$EnhancerBySpringCGLIB$$ad8ccb4d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:10.176  INFO 24908 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-26 18:35:10.446  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:11.440  INFO 24908 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-26 18:35:11.449  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:11.890  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:11.959  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myMetaObjectHandler' of type [com.zwk.handler.MyMetaObjectHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:14.185  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:14.216  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:14.236  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:14.244  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userMapper' of type [com.sun.proxy.$Proxy78] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:14.286  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userServiceImpl' of type [com.zwk.service.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:14.289  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRelam' of type [com.zwk.config.UserRelam] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:15.277  INFO 24908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'getDefaultWebSecurityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-26 18:35:17.292  INFO 24908 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:35:17.585  INFO 24908 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-26 18:35:19.639  INFO 24908 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 13.915 seconds (JVM running for 16.635)
+2020-07-26 18:35:20.886  INFO 24908 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-26 18:35:20.893  INFO 24908 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-26 18:35:20.894  INFO 24908 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-26 18:43:43.669  INFO 14608 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [1576475385,1576479826,1576482583; Hm_lvt_bdb993b828cbe079a7fbc1a951f44726=1580621814; __utma=96992031.1890151016.1583991940.1583991940.1583991940.1; __utmz=96992031.1583991940.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); JSESSIONID=A6E2EF0709686E56FC9F7C4FC7E28E07] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2020-07-26 18:43:43.689  INFO 14608 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-26 18:43:43.690  INFO 14608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-26 18:43:43.713  INFO 14608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms

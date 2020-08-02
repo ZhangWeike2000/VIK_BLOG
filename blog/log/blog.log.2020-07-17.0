@@ -1,0 +1,112 @@
+2020-07-17 22:28:41.888  INFO 484 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 484 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:28:41.894 DEBUG 484 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:28:41.895  INFO 484 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:28:45.497  INFO 484 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:28:46.246  INFO 484 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:28:50.812  INFO 484 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:28:51.613  INFO 484 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:28:52.431  INFO 484 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 11.479 seconds (JVM running for 14.536)
+2020-07-17 22:28:53.223  INFO 484 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:28:53.225  INFO 484 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-17 22:28:53.227  INFO 484 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-17 22:29:25.221  INFO 2144 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 2144 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:29:25.222 DEBUG 2144 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:29:25.223  INFO 2144 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:29:27.910  INFO 2144 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:29:28.334  INFO 2144 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:29:30.873  INFO 2144 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:29:31.083  INFO 2144 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:29:32.184  INFO 2144 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 7.71 seconds (JVM running for 9.973)
+2020-07-17 22:31:58.061  INFO 23312 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 23312 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:31:58.076 DEBUG 23312 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:31:58.080  INFO 23312 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:32:01.419  INFO 23312 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:32:01.924  INFO 23312 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:32:06.423  INFO 23312 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:32:07.093  INFO 23312 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:32:08.477  INFO 23312 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 11.891 seconds (JVM running for 15.017)
+2020-07-17 22:32:24.521  INFO 23484 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 23484 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:32:24.523 DEBUG 23484 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:32:24.529  INFO 23484 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:32:26.638  INFO 23484 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:32:27.074  INFO 23484 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:32:29.708  INFO 23484 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:32:30.094  INFO 23484 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:32:31.712  INFO 23484 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 8.193 seconds (JVM running for 10.478)
+2020-07-17 22:33:44.091  INFO 17828 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 17828 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:33:44.093 DEBUG 17828 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:33:44.095  INFO 17828 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:33:46.862  INFO 17828 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:33:47.497  INFO 17828 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:33:50.861  INFO 17828 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:33:51.092  INFO 17828 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:33:51.770  INFO 17828 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 8.527 seconds (JVM running for 11.381)
+2020-07-17 22:33:52.156  INFO 17828 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:33:52.157  INFO 17828 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-17 22:33:52.160  INFO 17828 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-17 22:34:35.615  INFO 10156 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 10156 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:34:35.617 DEBUG 10156 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:34:35.618  INFO 10156 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:34:38.052  INFO 10156 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:34:38.558  INFO 10156 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:34:41.078  INFO 10156 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:34:41.501  INFO 10156 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:34:42.776  INFO 10156 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 8.183 seconds (JVM running for 10.632)
+2020-07-17 22:34:43.152  INFO 10156 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:34:43.153  INFO 10156 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-17 22:34:43.155  INFO 10156 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-17 22:37:42.742  INFO 21980 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 21980 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:37:42.745 DEBUG 21980 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:37:42.754  INFO 21980 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:37:45.029  INFO 21980 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:37:45.437  INFO 21980 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:37:47.741  INFO 21980 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:37:47.936  INFO 21980 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:37:49.443  INFO 21980 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 7.894 seconds (JVM running for 10.037)
+2020-07-17 22:37:50.126  INFO 21980 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:37:50.128  INFO 21980 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-17 22:37:50.130  INFO 21980 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-17 22:38:42.048  INFO 11408 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 11408 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:38:42.050 DEBUG 11408 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:38:42.053  INFO 11408 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:38:44.412  INFO 11408 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:38:44.867  INFO 11408 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:38:47.224  INFO 11408 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:38:47.655  INFO 11408 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:38:49.187  INFO 11408 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 8.238 seconds (JVM running for 10.403)
+2020-07-17 22:38:49.552  INFO 11408 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:38:49.553  INFO 11408 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-17 22:38:49.556  INFO 11408 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-17 22:42:00.832  INFO 5268 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 5268 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:42:00.833 DEBUG 5268 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:42:00.834  INFO 5268 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:42:03.657  INFO 5268 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:42:04.069  INFO 5268 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:42:06.875  INFO 5268 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:42:07.111  INFO 5268 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:42:08.417  INFO 5268 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 8.363 seconds (JVM running for 10.513)
+2020-07-17 22:42:09.101  INFO 5268 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:42:09.104  INFO 5268 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-17 22:42:09.115  INFO 5268 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-17 22:47:30.743  INFO 10052 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 10052 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:47:30.746 DEBUG 10052 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:47:30.748  INFO 10052 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:47:32.722  INFO 10052 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:47:33.122  INFO 10052 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:47:35.398  INFO 10052 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:47:35.599  INFO 10052 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:47:36.993  INFO 10052 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 7.381 seconds (JVM running for 9.702)
+2020-07-17 22:47:37.775  INFO 10052 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:47:37.780  INFO 10052 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-17 22:47:37.782  INFO 10052 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-07-17 22:52:21.753  INFO 23112 --- [main] com.zwk.BlogApplicationTests             : Starting BlogApplicationTests on DESKTOP-11MH91A with PID 23112 (started by mrz in D:\IdeaFile\blog)
+2020-07-17 22:52:21.755 DEBUG 23112 --- [main] com.zwk.BlogApplicationTests             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 22:52:21.758  INFO 23112 --- [main] com.zwk.BlogApplicationTests             : No active profile set, falling back to default profiles: default
+2020-07-17 22:52:24.000  INFO 23112 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-07-17 22:52:24.411  INFO 23112 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-07-17 22:52:27.571  INFO 23112 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:52:28.021  INFO 23112 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 22:52:28.960  INFO 23112 --- [main] com.zwk.BlogApplicationTests             : Started BlogApplicationTests in 8.259 seconds (JVM running for 10.803)
+2020-07-17 22:52:29.357  INFO 23112 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-17 22:52:29.358  INFO 23112 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-07-17 22:52:29.361  INFO 23112 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

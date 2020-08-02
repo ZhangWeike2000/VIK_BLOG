@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zwk.mapper.BlogMapper">
+
+    <resultMap id="BaseResultMap" type="com.zwk.pojo.Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="firstPicture" column="first_picture"/>
+        <result property="flag" column="flag"/>
+        <result property="views" column="views"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="shareStatement" column="share_statement"/>
+        <result property="commentabled" column="commentabled"/>
+        <result property="published" column="published"/>
+        <result property="recommend" column="recommend"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="description" column="description"/>
+        <result property="typeId" column="type_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="tagIds" column="tag_ids"/>
+        <association property="type" column="typeId" javaType="com.zwk.pojo.Type">
+            <id column="typeId" property="id"/>
+            <result column="typeName" property="name"/>
+        </association>
+        <association property="user" column="userId" javaType="com.zwk.pojo.User">
+            <id property="id" column="userId"/>
+            <result property="nickname" column="nickname"/>
+            <result property="username" column="username"/>
+            <result property="email" column="email"/>
+            <result property="avatar" column="avatar"/>
+        </association>
+        <collection property="tags" ofType="com.zwk.pojo.Tag">
+            <id property="id" column="tagId"/>
+            <result property="name" column="tagName"/>
+        </collection>
+    </resultMap>
+
+    <!--后台获取博客-->
+    <select id="selectBlogAll" resultMap="BaseResultMap" resultType="com.zwk.pojo.Blog">
+        select a.id,a.title,a.recommend,a.published,a.update_time,b.id as typeId,b.name as typeName from t_blog a,t_type b where a.type_id=b.id
+    </select>
+
+
+    <!--后台搜索博客-->
+    <select id="searchBlog" resultMap="BaseResultMap">
+        select a.id,a.title,a.recommend,a.published,a.update_time,b.id as typeId,b.name as typeName from t_blog a,t_type b where a.type_id=b.id
+        <if test="title != null and title != ''">
+            and a.title like CONCAT('%',#{title},'%')
+        </if>
+        <if test="typeId != null">
+            and a.type_id=#{typeId}
+        </if>
+        <if test="recommend!=null">
+            and a.recommend=#{recommend}
+        </if>
+    </select>
+
+    <!--前台获取博客信息-->
+    <select id="getIndexBlog" resultMap="BaseResultMap">
+       select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u
+       where b.type_id=t.id and b.user_id=u.id and b.published=1 order by b.update_time desc
+    </select>
+
+    <!--通过分类编号获取博客列表-->
+    <select id="getBlogByTypeId" resultMap="BaseResultMap">
+        select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u
+        where b.type_id=t.id and b.user_id=u.id and b.type_id=#{typeId} and b.published=1
+    </select>
+
+    <!--通过标签编号获取博客列表-->
+    <select id="getBlogByTagId" resultMap="BaseResultMap">
+        select b.id, b.title, b.first_picture, b.views, b.update_time, b.description,
+        t.name typename, t.id typeid,
+        t1.name tagname, t1.id tagid,
+        u.nickname, u.avatar
+        from t_blog b, t_type t, t_user u, t_blog_tags tb, t_tag t1
+        where b.type_id = t.id and u.id = b.user_id and tb.blog_id = b.id and tb.tag_id = t1.id and t1.id = #{tagId}
+        order by b.update_time desc
+    </select>
+
+    <!--获得最新推荐的博客-->
+    <select id="getRecommendBlog" resultMap="BaseResultMap">
+        select id,title from t_blog where recommend=1 and published=1 order by update_time desc
+    </select>
+
+    <!--前端全局搜索-->
+    <select id="searchIndexBlog" resultMap="BaseResultMap">
+        select b.id,b.title,b.first_picture,b.description,b.views,b.update_time,t.name as typeName,u.avatar,u.nickname from t_blog b,t_type t,t_user u
+        where b.type_id=t.id and b.user_id=u.id and b.published=1 and (b.title like CONCAT('%',#{query},'%') or b.content like CONCAT('%',#{query},'%') or b.description like CONCAT('%',#{query},'%') ) order by b.update_time desc
+    </select>
+
+    <!--获取博客详情-->
+    <select id="getDetailedBlog" resultMap="BaseResultMap">
+        select b.id,b.title,b.first_picture,b.flag,b.content,b.views,b.update_time,b.commentabled,b.appreciation,b.share_statement,b.tag_ids,
+            u.avatar,u.nickname
+        from t_blog b,t_user u
+        where b.user_id=u.id and b.published=1 and b.id=#{id}
+    </select>
+
+
+    <!--更新浏览次数-->
+    <update id="updateViews">
+        update t_blog set views=views+1 where id=#{id}
+    </update>
+
+    <!--建立标签与博客-->
+    <insert id="saveBlogAndTag" parameterType="com.zwk.pojo.BlogAndTag">
+        insert into t_blog_tags (tag_id, blog_id) values (#{tagId},#{blogId});
+    </insert>
+
+    <!--通过年份获得博客-->
+    <select id="findByYear" resultMap="BaseResultMap">
+        select id,title,update_time,flag from t_blog where DATE_FORMAT(update_time,'%Y')=#{year} and published=1
+    </select>
+
+    <!--查询年份集合-->
+    <select id="findGroupYear" resultType="java.lang.String">
+        select DATE_FORMAT(update_time,'%Y') from t_blog order by update_time desc
+    </select>
+
+    <!--查询博客数量-->
+    <select id="countBlog" resultType="java.lang.Integer">
+        select count(1) from  t_blog
+    </select>
+</mapper>
