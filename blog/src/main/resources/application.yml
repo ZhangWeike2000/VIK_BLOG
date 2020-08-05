@@ -11,7 +11,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url:  jdbc:mysql://120.26.161.154:3305/blogs?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
       username: myuser
-      password: root
+      password: ****
 
 
 mybatis-plus:
